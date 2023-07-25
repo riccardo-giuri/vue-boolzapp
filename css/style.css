@@ -83,4 +83,40 @@
 
 .chat_window {
     background-image: url("../img/mine.jpg");
+    padding: 3rem 5rem;
+}
+
+.chat_inputs {
+    background-color: #f3eeea;
+    display: flex;
+    align-items: center;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+}
+
+.message_baloon {
+    background-color: #989898;
+    display: inline-block;
+    padding: 1rem;
+}
+
+.message_time {
+    font-size: .7rem;
+    position: absolute;
+    right: 5px;
+    bottom: 2px;
+}
+
+.message-wrapper {
+    display: flex;
+    margin-bottom: .5rem;
+}
+
+.sent {
+    margin-left: auto;
+    background-color: #d5f9ba;
+}
+
+.recived {
+    background-color: white;
 }
