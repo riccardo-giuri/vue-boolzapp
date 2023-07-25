@@ -1,0 +1,77 @@
+.bg_waterGreen {
+    background-color: #009688;
+}
+
+.container {
+    height: 100vh;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+#app {
+    background-color: #d9dbd3;
+}
+
+.greenBackLine {
+    background-color: #009688;
+    height: 15%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.avatarIcons {
+    color: #989898;
+}
+
+.avatar_img {
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar_nav {
+    background-color: #dfdfdf;
+    display: flex;
+    align-items: center;
+    padding: .7rem;
+}
+
+.notifications {
+    background-color: #8edafc;
+    display: flex;
+    align-items: center;
+    padding: .7rem;
+    padding-left: 1rem;
+}
+
+.notification_icon {
+    background-color: white;
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8edafc;
+}
+
+.small_text {
+    color: #769599;
+    font-size: .7rem;
+}
+
+.input-group {
+    background-color: #fafafa;
+}
+
+.chat_list_item {
+    display: flex;
+    padding: .7rem;
+    padding-left: 1rem;
+}
+
+.chat_time {
+    font-size: .7rem;
+}

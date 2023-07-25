@@ -13,8 +13,65 @@
     </head>
 
     <body>
+        <div class="greenBackLine"></div>
+        <div id="app">
+            <div class="container position-relative">
+                <div class="row h-100">
+                    <div class="col-5 d-flex flex-column h-100">
+                        <div class="avatar_nav">
+                            <div class="avatar_img">
+                                <img src="img/avatar_1.jpg" alt="" class="w-100 h-100">
+                            </div>
+    
+                            <div class="avatarName fs-5 flex-grow-1 ms-2">Paolo</div>
+    
+                            <div class="avatarIcons d-flex gap-3 me-2">
+                                <i class="fa-solid fa-circle-notch"></i>
+                                <i class="fa-solid fa-message"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="notifications">
+                            <i class="fa-solid fa-bell-slash notification_icon"></i>
+    
+                            <div class="ms-2 d-flex flex-column">
+                                <div class="fw-semibold">Ricevi notifiche di nuovi messaggi</div>
+                                <a href="#0" class="small_text">Attiva notifiche dekstop</a>
+                            </div>
+                        </div>
+
+                        <div class="input-group p-2">
+                            <button class="btn btn-light bg-white"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+                            <input type="text" class="form-control form-control-sm border-0" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+
+                        <ul class="list-group list-group-flush flex-grow-1 bg-white overflow-y-scroll">
+                            <li class="list-group-item list-group-item-action chat_list_item border-bottom">
+                                <div class="avatar_img">
+                                    <img src="img/avatar_1.jpg" alt="" class="w-100 h-100">
+                                </div>
         
-        
+                                <div class="ms-2 d-flex flex-column flex-grow-1">
+                                    <div class="fw-semibold">Michele</div>
+                                    <div class="small_text text-decoration-none">Ultimo messaggio inviato</div>
+                                </div>
+
+                                <div class="chat_time mt-1">12.00</div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="col-7">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="js/script.js"></script>
     </body>
 </html>
