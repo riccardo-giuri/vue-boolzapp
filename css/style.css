@@ -62,6 +62,11 @@
     font-size: .7rem;
 }
 
+.medium_text {
+    color: #769599;
+    font-size: .8rem;
+}
+
 .input-group {
     background-color: #fafafa;
 }
@@ -74,4 +79,8 @@
 
 .chat_time {
     font-size: .7rem;
+}
+
+.chat_window {
+    background-image: url("../img/mine.jpg");
 }
