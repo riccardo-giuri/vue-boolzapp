@@ -94,17 +94,73 @@ const app = Vue.createApp({
         },
       ],
 
-      currentActiveprofile: null
+      currentActiveprofile: null,
+      newMessage: ""
     }
   },
 
   methods: {
     openChat(chatToOpen) {
       this.currentActiveprofile = chatToOpen;
+    },
+
+    Test() {
+      console.log("SOS");
+    },
+
+    onEnterMessage() {
+      this.sendMessage();
+      setTimeout(this.autoReply, 1000);
+    },
+
+    sendMessage() {
+      if(this.newMessage !== "") {
+        const newFormattedDate = this.createFormattedTime();
+
+        const messageToAdd = {
+          date: newFormattedDate,
+          message: this.newMessage,
+          status: "sent"
+        }
+
+        this.currentActiveprofile.messages.push(messageToAdd);
+        this.currentActiveprofile.messageNumber++;
+      }
+    },
+
+    createFormattedTime() {
+      const now = new Date();
+
+      const rawformattedIT = Intl.DateTimeFormat('it', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(now);
+
+      const formattedIT = rawformattedIT.replace(',', '');
+
+      return formattedIT;
+    },
+
+    autoReply() {
+      const newFormattedDate = this.createFormattedTime();
+
+      const messageToAdd = {
+        date: newFormattedDate,
+        message: "ok, ho capito!",
+        status: "received"
+      }
+
+      this.currentActiveprofile.messages.push(messageToAdd);
+      this.currentActiveprofile.messageNumber++;
     }
   },
 
   beforeMount() {
+    this.createFormattedTime();
     this.currentActiveprofile = this.contacts[0];
   }
 }).mount("#app");

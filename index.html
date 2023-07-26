@@ -89,14 +89,15 @@
 
                                 <div class="message_baloon position-relative rounded" :class="messageToPrint.status">
                                     <div class="me-5">{{ messageToPrint.message }}</div>
-                                    <div class="message_time">{{ messageToPrint.date }}</div>
+                                    <div class="message_time" @click="Test">{{ messageToPrint.date }}</div>
                                 </div>
                             </div>                           
                         </div>
 
                         <div class="chat_inputs">
                             <i class="fa-regular fa-face-smile ms-4 me-4 fs-5"></i>
-                            <input type="text" class="form-control" placeholder="Scrivi un messaggio">
+                            <input type="text" class="form-control" placeholder="Scrivi un messaggio"
+                                   v-model="newMessage" @keydown.enter="onEnterMessage">
                             <i class="fa-solid fa-microphone ms-4 me-4 fs-5"></i>
                         </div>
                     </div>

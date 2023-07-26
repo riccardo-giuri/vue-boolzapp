@@ -96,7 +96,7 @@
 
 .message_baloon {
     background-color: #989898;
-    display: inline-block;
+    display: flex;
     padding: 1rem;
 }
 
