@@ -49,7 +49,7 @@
 
                         <ul class="list-group list-group-flush flex-grow-1 bg-white overflow-y-scroll">
                             <li class="list-group-item list-group-item-action chat_list_item border-bottom"
-                                v-for="profile in contatti">
+                                v-for="profile in contacts" @click="openChat(profile)">
                                 <div class="avatar_img">
                                     <img :src="'img/avatar' + profile.avatar + '.jpg'"  alt="" class="w-100 h-100">
                                 </div>
@@ -59,7 +59,7 @@
                                     <div class="small_text text-decoration-none">{{ profile.messages[profile.messageNumber - 1].message}}</div>
                                 </div>
 
-                                <div class="chat_time mt-1">12.00</div>
+                                <div class="chat_time mt-1">{{ profile.messages[profile.messageNumber - 1].date }}</div>
                             </li>
                         </ul>
 
@@ -68,12 +68,12 @@
                     <div class="col-8 h-100 p-0 d-flex flex-column">
                         <div class="avatar_nav">
                             <div class="avatar_img">
-                                <img src="img/avatar_1.jpg" alt="" class="w-100 h-100">
+                                <img :src="'img/avatar' + currentActiveprofile.avatar + '.jpg'" alt="" class="w-100 h-100">
                             </div>
     
                             <div class="ms-2 d-flex flex-column flex-grow-1">
-                                <div class="fw-semibold">Michele</div>
-                                <div class="medium_text text-decoration-none">Ultimo accesso oggi alle 12.00</div>
+                                <div class="fw-semibold">{{ currentActiveprofile.name }}</div>
+                                <div class="medium_text text-decoration-none">Ultimo accesso oggi alle {{ currentActiveprofile.messages[currentActiveprofile.messageNumber - 1].date }}</div>
                             </div>
     
                             <div class="avatarIcons d-flex gap-3 me-2">
@@ -84,24 +84,12 @@
                         </div>
 
                         <div class="chat_window flex-grow-1 overflow-y-scroll">
-                            <div class="single-message-wrapper">
-                                <div class="message_baloon sent position-relative rounded">
-                                    <div class="me-5">hai portato a spasso il cane?</div>
-                                    <div class="message_time">12.00</div>
-                                </div>
-                            </div> 
+                            <div class="single-message-wrapper"
+                                 v-for="(messageToPrint, i) in currentActiveprofile.messages">
 
-                            <div class="single-message-wrapper">
-                                <div class="message_baloon recived position-relative rounded">
-                                    <div class="me-5">hai portato a spasso il cane?</div>
-                                    <div class="message_time">12.00</div>
-                                </div>
-                            </div> 
-
-                            <div class="single-message-wrapper">
-                                <div class="message_baloon recived position-relative rounded">
-                                    <div class="me-5">hai portato a spasso il cane?</div>
-                                    <div class="message_time">12.00</div>
+                                <div class="message_baloon position-relative rounded" :class="messageToPrint.status">
+                                    <div class="me-5">{{ messageToPrint.message }}</div>
+                                    <div class="message_time">{{ messageToPrint.date }}</div>
                                 </div>
                             </div>                           
                         </div>

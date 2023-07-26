@@ -1,7 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      contatti: [
+      contacts: [
         {
           id: 1,
           name: "Michele",
@@ -92,7 +92,19 @@ const app = Vue.createApp({
             },
           ],
         },
-      ]
+      ],
+
+      currentActiveprofile: null
     }
+  },
+
+  methods: {
+    openChat(chatToOpen) {
+      this.currentActiveprofile = chatToOpen;
+    }
+  },
+
+  beforeMount() {
+    this.currentActiveprofile = this.contacts[0];
   }
 }).mount("#app");
