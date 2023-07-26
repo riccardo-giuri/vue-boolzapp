@@ -20,7 +20,7 @@
                     <div class="col-4 d-flex flex-column h-100 p-0">
                         <div class="avatar_nav">
                             <div class="avatar_img">
-                                <img src="img/avatar_1.jpg" alt="" class="w-100 h-100">
+                                <img src="img/avatar_io.jpg" alt="" class="w-100 h-100">
                             </div>
     
                             <div class="avatarName fs-5 flex-grow-1 ms-2">Paolo</div>
@@ -48,14 +48,15 @@
                         </div>
 
                         <ul class="list-group list-group-flush flex-grow-1 bg-white overflow-y-scroll">
-                            <li class="list-group-item list-group-item-action chat_list_item border-bottom">
+                            <li class="list-group-item list-group-item-action chat_list_item border-bottom"
+                                v-for="profile in contatti">
                                 <div class="avatar_img">
-                                    <img src="img/avatar_1.jpg" alt="" class="w-100 h-100">
+                                    <img :src="'img/avatar' + profile.avatar + '.jpg'"  alt="" class="w-100 h-100">
                                 </div>
         
                                 <div class="ms-2 d-flex flex-column flex-grow-1">
-                                    <div class="fw-semibold">Michele</div>
-                                    <div class="small_text text-decoration-none">Ultimo messaggio inviato</div>
+                                    <div class="fw-semibold">{{ profile.name }}</div>
+                                    <div class="small_text text-decoration-none">{{ profile.messages[profile.messageNumber - 1].message}}</div>
                                 </div>
 
                                 <div class="chat_time mt-1">12.00</div>
@@ -82,27 +83,27 @@
                             </div>
                         </div>
 
-                        <div class="chat_window flex-grow-1">
-                            <div class="message-wrapper">
+                        <div class="chat_window flex-grow-1 overflow-y-scroll">
+                            <div class="single-message-wrapper">
                                 <div class="message_baloon sent position-relative rounded">
                                     <div class="me-5">hai portato a spasso il cane?</div>
                                     <div class="message_time">12.00</div>
                                 </div>
                             </div> 
 
-                            <div class="message-wrapper">
+                            <div class="single-message-wrapper">
                                 <div class="message_baloon recived position-relative rounded">
                                     <div class="me-5">hai portato a spasso il cane?</div>
                                     <div class="message_time">12.00</div>
                                 </div>
                             </div> 
 
-                            <div class="message-wrapper">
+                            <div class="single-message-wrapper">
                                 <div class="message_baloon recived position-relative rounded">
                                     <div class="me-5">hai portato a spasso il cane?</div>
                                     <div class="message_time">12.00</div>
                                 </div>
-                            </div> 
+                            </div>                           
                         </div>
 
                         <div class="chat_inputs">
@@ -115,6 +116,7 @@
             </div>
         </div>
 
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>

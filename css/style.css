@@ -107,7 +107,7 @@
     bottom: 2px;
 }
 
-.message-wrapper {
+.single-message-wrapper {
     display: flex;
     margin-bottom: .5rem;
 }
