@@ -44,12 +44,13 @@
                         <div class="input-group p-2">
                             <button class="btn btn-light bg-white"><i class="fa-solid fa-magnifying-glass"></i></button>
 
-                            <input type="text" class="form-control form-control-sm border-0" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" class="form-control form-control-sm border-0" placeholder="Cerca o inizia una nuova chat"
+                                   v-model="filterValue" @input="filterContacts">
                         </div>
 
                         <ul class="list-group list-group-flush flex-grow-1 bg-white overflow-y-scroll">
                             <li class="list-group-item list-group-item-action chat_list_item border-bottom"
-                                v-for="profile in contacts" @click="openChat(profile)">
+                                v-for="profile in filteredList" @click="openChat(profile)">
                                 <div class="avatar_img">
                                     <img :src="'img/avatar' + profile.avatar + '.jpg'"  alt="" class="w-100 h-100">
                                 </div>

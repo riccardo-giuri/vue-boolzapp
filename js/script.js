@@ -94,8 +94,11 @@ const app = Vue.createApp({
         },
       ],
 
+      filteredList: [],
+
       currentActiveprofile: null,
-      newMessage: ""
+      newMessage: "",
+      filterValue: ""
     }
   },
 
@@ -105,7 +108,7 @@ const app = Vue.createApp({
     },
 
     Test() {
-      console.log("SOS");
+      console.log(this.filterValue);
     },
 
     onEnterMessage() {
@@ -156,11 +159,16 @@ const app = Vue.createApp({
 
       this.currentActiveprofile.messages.push(messageToAdd);
       this.currentActiveprofile.messageNumber++;
+    },
+
+    filterContacts() {
+      this.filteredList = this.contacts.filter(value => value.name.includes(this.filterValue));
     }
   },
 
   beforeMount() {
     this.createFormattedTime();
-    this.currentActiveprofile = this.contacts[0];
+    this.filteredList = this.contacts;
+    this.currentActiveprofile = this.filteredList[0];
   }
 }).mount("#app");
