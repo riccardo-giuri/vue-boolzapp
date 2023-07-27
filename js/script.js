@@ -1,6 +1,10 @@
 const app = Vue.createApp({
   data() {
     return {
+      /**
+       * The array that contains the contact objects
+       * @type {object[]}
+       */
       contacts: [
         {
           id: 1,
@@ -94,46 +98,81 @@ const app = Vue.createApp({
         },
       ],
 
+      /**
+       * the list of filtered contacts from the search input
+       * @type {object[]}
+       */
       filteredList: [],
 
+      /**
+       * the curret profile selected in the chat
+       * @type {object}
+       */
       currentActiveprofile: null,
+
+      /**
+       * the new message input from the chat form
+       * @type {string} 
+       */
       newMessage: "",
+
+      /**
+       * the string that you need to use to filter the profiles
+       * @type {string} 
+       */
       filterValue: ""
     }
   },
 
   methods: {
+    /**
+     * Open the chat when is clicked
+     * @param {object} chatToOpen The profile object that need to be the next active item
+     */
     openChat(chatToOpen) {
       this.currentActiveprofile = chatToOpen;
     },
 
-    Test() {
-      console.log(this.filterValue);
-    },
-
+    /**
+     * The function called when the key enter is used on the chat form
+     */
     onEnterMessage() {
       this.sendMessage();
       setTimeout(this.autoReply, 1000);
     },
 
+    /**
+     * Send the new message to the chat log
+     */
     sendMessage() {
+      //check if the new message exist
       if(this.newMessage !== "") {
+        //create a new date to insert in the new message object that need to be added
         const newFormattedDate = this.createFormattedTime();
 
+        //create the new sent message object with his new values
         const messageToAdd = {
           date: newFormattedDate,
           message: this.newMessage,
           status: "sent"
         }
 
+        //add the object created to the messages array
         this.currentActiveprofile.messages.push(messageToAdd);
+        //increment the number of total messages in that chat
         this.currentActiveprofile.messageNumber++;
       }
     },
 
+    /**
+     * Format the current date correctly and returns its value
+     * @returns {string} 
+     */
     createFormattedTime() {
+      //create a new current date
       const now = new Date();
 
+      //format the date in the way you want
       const rawformattedIT = Intl.DateTimeFormat('it', {
         day: 'numeric',
         month: 'numeric',
@@ -143,25 +182,38 @@ const app = Vue.createApp({
         second: '2-digit'
       }).format(now);
 
+      //eliminate the unwanted characters in the string
       const formattedIT = rawformattedIT.replace(',', '');
 
+      //return the formatted date string value
       return formattedIT;
     },
 
+    /**
+     * send the reply automatic message
+     */
     autoReply() {
+      //create new current date
       const newFormattedDate = this.createFormattedTime();
 
+      //create the new recived message object with his new values
       const messageToAdd = {
         date: newFormattedDate,
         message: "ok, ho capito!",
         status: "received"
       }
 
+      //add the object created to the messages array
       this.currentActiveprofile.messages.push(messageToAdd);
+      //increment the number of total messages in that chat
       this.currentActiveprofile.messageNumber++;
     },
 
+    /**
+     * Filter the contacts by the string value of the form
+     */
     filterContacts() {
+      //add a new filtered array by a string, to the filtered array variable
       this.filteredList = this.contacts.filter(value => value.name.includes(this.filterValue));
     }
   },
